@@ -1,31 +1,22 @@
 #include <stdio.h>
 
 int main() {
-    int n;
-    long long t1 = 0, t2 = 1, nextTerm;
+    int n, t1 = 0, t2 = 1, nextTerm = 0;
 
-    printf("Enter the number of terms: ");
-    if (scanf("%d", &n) != 1 || n <= 0) {
-        printf("Please enter a valid positive integer.\n");
-        return 1;
-    }
+    printf("Enter a positive number up to which you want the series: ");
+    scanf("%d", &n);
 
-    printf("Fibonacci Series: ");
+    printf("Fibonacci Series: %d, %d", t1, t2);
+    nextTerm = t1 + t2;
 
-    for (int i = 1; i <= n; ++i) {
-        printf("%lld", t1);
-        
-        // Print commas between numbers, but not after the last one
-        if (i < n) {
-            printf(", ");
-        }
-
-        // Calculate the next term and update our variables
-        nextTerm = t1 + t2;
+    // Loop to generate the next numbers until it exceeds N
+    while (nextTerm <= n) {
+        printf(", %d", nextTerm);
         t1 = t2;
         t2 = nextTerm;
+        nextTerm = t1 + t2;
     }
-
     printf("\n");
+
     return 0;
 }
